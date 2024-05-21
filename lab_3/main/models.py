@@ -9,6 +9,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+class Brand(models.Model):
+    name = models.CharField(max_length=200, null=False)
+
+    def __str__(self):
+        return self.name
+    
 class Product(models.Model):
     name = models.CharField(max_length=200, null=False)
     link = models.CharField(max_length=200, null=False, unique=True, blank=True, default='')

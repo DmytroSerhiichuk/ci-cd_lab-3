@@ -21,7 +21,7 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    re_path(r'^categories/?$', views.categories, name='categories'),
-    re_path(r'^categories/(?P<category_link>\w+)/?$', views.category, name='category'),
-    re_path(r'^(?P<product_link>.+)/?$', views.product, name='product'),
+    re_path(r'^shop/?$', views.shop, name='shop'),
+    re_path(r'^shop/(?P<category_link>\w+)/?$', views.category, name='category'),
+    # re_path(r'^(?P<product_link>.+)/?$', views.product, name='product'),
 ]
