@@ -13,6 +13,11 @@
     <!-- Amado Nav -->
     <nav class="amado-nav">
         <ul>
+            {% if active == 'Profile' %}
+                <li class="active"><a href="{% url 'profile' %}">Profile</a></li>
+            {% else %} 
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+            {% endif %}
             {% if active == 'Home' %}
                 <li class="active"><a href="{% url 'home' %}">Home</a></li>
             {% else %} 
@@ -35,7 +40,7 @@
     </div>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-        <a href="cart.html" class="cart-nav"><img src="{% static 'main/img/core-img/cart.png' $}" alt=""> Cart <span>(0)</span></a>
+        <a href="cart.html" class="cart-nav"><img src="{% static 'main/img/core-img/cart.png' %}" alt=""> Cart <span>(0)</span></a>
         <a href="#" class="fav-nav"><img src="{% static 'main/img/core-img/favorites.png' %}" alt=""> Favourite</a>
         <a href="#" class="search-nav"><img src="{% static 'main/img/core-img/search.png' %}" alt=""> Search</a>
     </div>

@@ -26,6 +26,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                             <div class="collapse navbar-collapse" id="footerNavContent">
                                 <ul class="navbar-nav ml-auto">
+                                    {% if active == "Profile" %}
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                        </li>
+                                    {% else %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                        </li>
+                                    {% endif %}
+
                                     {% if active == "Home" %}
                                         <li class="nav-item active">
                                             <a class="nav-link" href="{% url 'home' %}">Home</a>

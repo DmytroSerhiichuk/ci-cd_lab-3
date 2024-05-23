@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        {% include "includes/header.html" with active="Profile" %}
+
+        <div class="amado_product_area section-padding-100">
+            <div class="container-fluid">
+                <h2 class="auth-title">Sign Up</h2>
+            
+                <form class="auth-form" method="POST" action="">
+                    {% csrf_token %}
+                    <div class="auth-form-content">
+                        {% for field in form %}
+                            <div class="row">
+                                {{field.label_tag}}
+                                <div>{{field}}</div>
+                                {% if field.errors%}
+                                <div class="error">{{field.errors}}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- <div>
+                        <input class="auth-input" type="name" placeholder="First name" minlength="2" name="first_name">
+                        <input class="auth-input" type="name" placeholder="Second name" minlength="2" name="second_name">
+                        <input class="auth-input" type="email" placeholder="Email" minlength="2" name="email">
+                        <input class="auth-input" type="password" placeholder="Password" minlength="2" name="password">
+                    </div> -->
+    
+                    <button class="btn amado-btn mb-15" id="form_submit_btn">Sign Up</button>
+
+                    <a href="{% url 'login' %}" class="auth-swapper"><p>Already have an account? Log In</p></a>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+    
+    {% include "includes/footer.html" with active="Profile" %}
+
+{% endblock content %}
