@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Category, Product, Brand
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from .forms import SignupForm, AuthenticationForm, UserUpdateForm
 from django.contrib.auth.forms import PasswordChangeForm
 
@@ -80,6 +80,11 @@ def password_change(request):
         return render(request, 'password_change.html', context=data)
     else:
         return redirect('login')
+    
+def logout(request):
+    if request.user.is_authenticated:
+        auth_logout(request)
+    return redirect('home')
     
 def login(request):
     if request.method == "POST":
