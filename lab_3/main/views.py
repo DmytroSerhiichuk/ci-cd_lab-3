@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Category, Product, Brand
-from django.contrib.auth import authenticate, login as auth_login
-from .forms import SignupForm, AuthenticationForm
+from django.contrib.auth import login as auth_login
+from .forms import SignupForm, AuthenticationForm, UserUpdateForm
+from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 
@@ -50,10 +51,33 @@ def product(request, product_link):
 
 def profile(request):
     if request.user.is_authenticated:
+        form = UserUpdateForm(instance=request.user)
+        if request.method == "POST":
+            form = UserUpdateForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
         data = {
-            'title': 'Amado - Furniture Ecommerce Template | Home',
+            'title': 'Amado - Furniture Ecommerce Template | Profile',
+            'user': request.user,
+            'form': form
         }
-        return render(request, 'index.html', context=data)
+        return render(request, 'profile.html', context=data)
+    else:
+        return redirect('login')
+    
+def password_change(request):
+    if request.user.is_authenticated:
+        form = PasswordChangeForm(request.user)
+        if request.method == "POST":
+            form = PasswordChangeForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+        data = {
+            'title': 'Amado - Furniture Ecommerce Template | Password Changing',
+            'user': request.user,
+            'form': form
+        }
+        return render(request, 'password_change.html', context=data)
     else:
         return redirect('login')
     
@@ -63,16 +87,14 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return redirect('home')
+            return redirect('profile')
     else:
         form = AuthenticationForm()
 
     data = {
-        'title': 'Amado - Furniture Ecommerce Template | LogIn',
+        'title': 'Amado - Furniture Ecommerce Template | Log In',
         'form': form
     }
-
-    print(form)
 
     return render(request, 'login.html', context=data)  
     
@@ -82,12 +104,12 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return redirect('home')
+            return redirect('profile')
     else:
         form = SignupForm()
 
     data = {
-        'title': 'Amado - Furniture Ecommerce Template | SignUp',
+        'title': 'Amado - Furniture Ecommerce Template | Sign Up',
         'form': form
     }
 
