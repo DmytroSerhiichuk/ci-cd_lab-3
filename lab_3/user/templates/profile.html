@@ -22,11 +22,11 @@
                         <button class="btn amado-btn mb-15" id="form_submit_btn">Change</button>
                     </form>
                     
-                    <a href="{% url 'password_change' %}">
+                    <a href="{% url 'user:password_change' %}">
                         <button class="btn amado-btn mb-15 profile-btn" id="form_submit_btn">Change Password</button>
                     </a>
 
-                    <form method="POST" action="{% url 'logout' %}">
+                    <form method="POST" action="{% url 'user:logout' %}">
                         {% csrf_token %}
                         <button class="btn amado-btn mb-15 profile-btn" id="form_submit_btn">Log Out</button>
                     </form>

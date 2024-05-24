@@ -9,7 +9,7 @@
                 <div class="single_widget_area">
                     <!-- Logo -->
                     <div class="footer-logo mr-50">
-                        <a href="{% url 'home' %}"><img src="{% static 'main/img/core-img/logo2.png' %}" alt=""></a>
+                        <a href="{% url 'main:home' %}"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
                     </div>
                     <!-- Copywrite Text -->
                     <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -28,31 +28,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <ul class="navbar-nav ml-auto">
                                     {% if active == "Profile" %}
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                            <a class="nav-link" href="{% url 'user:profile' %}">Profile</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                            <a class="nav-link" href="{% url 'user:profile' %}">Profile</a>
                                         </li>
                                     {% endif %}
 
                                     {% if active == "Home" %}
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                            <a class="nav-link" href="{% url 'main:home' %}">Home</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                            <a class="nav-link" href="{% url 'main:home' %}">Home</a>
                                         </li>
                                     {% endif %}
 
                                     {% if active == "Shop" %}
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                                            <a class="nav-link" href="{% url 'main:shop' %}">Shop</a>
                                         </li>
                                     {% else %}
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                                            <a class="nav-link" href="{% url 'main:shop' %}">Shop</a>
                                         </li>
                                     {% endif %}
                                     <li class="nav-item">

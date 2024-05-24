@@ -8,25 +8,25 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-        <a href="{% url 'home' %}"><img src="{% static 'main/img/core-img/logo.png' %}" alt=""></a>
+        <a href="{% url 'main:home' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
     </div>
     <!-- Amado Nav -->
     <nav class="amado-nav">
         <ul>
             {% if active == 'Profile' %}
-                <li class="active"><a href="{% url 'profile' %}">Profile</a></li>
+                <li class="active"><a href="{% url 'user:profile' %}">Profile</a></li>
             {% else %} 
-                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'user:profile' %}">Profile</a></li>
             {% endif %}
             {% if active == 'Home' %}
-                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li class="active"><a href="{% url 'main:home' %}">Home</a></li>
             {% else %} 
-                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'main:home' %}">Home</a></li>
             {% endif %}
             {% if active == 'Shop' %}
-                <li class="active"><a href="{% url 'shop' %}">Shop</a></li>
+                <li class="active"><a href="{% url 'main:shop' %}">Shop</a></li>
             {% else %} 
-                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li><a href="{% url 'main:shop' %}">Shop</a></li>
             {% endif %} 
             <!-- <li><a href="product-details.html">Product</a></li> -->
             <li><a href="cart.html">Cart</a></li>
@@ -40,9 +40,9 @@
     </div>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-        <a href="cart.html" class="cart-nav"><img src="{% static 'main/img/core-img/cart.png' %}" alt=""> Cart <span>(0)</span></a>
-        <a href="#" class="fav-nav"><img src="{% static 'main/img/core-img/favorites.png' %}" alt=""> Favourite</a>
-        <a href="#" class="search-nav"><img src="{% static 'main/img/core-img/search.png' %}" alt=""> Search</a>
+        <a href="cart.html" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> Cart <span>(0)</span></a>
+        <a href="#" class="fav-nav"><img src="{% static 'img/core-img/favorites.png' %}" alt=""> Favourite</a>
+        <a href="#" class="search-nav"><img src="{% static 'img/core-img/search.png' %}" alt=""> Search</a>
     </div>
     <!-- Social Button -->
     <div class="social-info d-flex justify-content-between">
