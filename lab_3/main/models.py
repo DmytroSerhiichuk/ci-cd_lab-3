@@ -12,7 +12,7 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         if self.link == '':
             self.link = self.name.lower().strip().replace(' ', '-')
-        super(Product, self).save(*args, **kwargs)
+        super(Category, self).save(*args, **kwargs)
     
 class Brand(models.Model):
     name = models.CharField(max_length=200, null=False, unique=True)
