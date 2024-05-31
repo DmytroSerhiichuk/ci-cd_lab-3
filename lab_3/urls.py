@@ -24,4 +24,7 @@ urlpatterns = [
     path('', include("main.urls"), name="main"),
     path('user/', include("user.urls"), name="user"),
     # re_path(r'^(?P<product_link>.+)/?$', views.product, name='product'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
