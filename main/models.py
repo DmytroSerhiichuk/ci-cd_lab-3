@@ -47,3 +47,12 @@ class Order(models.Model):
         orderitems = self.purchaseitem_set.all()
         total = sum([item.getTotal() for item in orderitems])
         return total
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
+    quantity = models.IntegerField(default=0, null=True, blank=True)
+
+    def getTotal(self):
+        total = self.movie.price * self.quantity
+        return total
