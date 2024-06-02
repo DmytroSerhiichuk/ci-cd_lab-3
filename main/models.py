@@ -1,10 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from user.models import User
 
 # Create your models here.
 
 class Category(models.Model):
     name = models.CharField(max_length=200, null=False, unique=True)
+    
     link = models.CharField(max_length=200, null=False, unique=True, blank=True, default='')
 
     def __str__(self):
@@ -22,15 +23,24 @@ class Brand(models.Model):
         return self.name
     
 class Product(models.Model):
+    price = models.FloatField(default=0.00)
     name = models.CharField(max_length=200, null=False)
     link = models.CharField(max_length=200, null=False, unique=True, blank=True, default='')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=False, default=0)
+    image = models.ImageField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if self.link == '':
             self.link = self.name.lower().strip().replace(' ', '-')
         super(Product, self).save(*args, **kwargs)
 
+    def showImage(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+    
     def __str__(self):
         return self.name
     

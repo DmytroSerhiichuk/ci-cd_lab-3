@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from .models import Category, Product, Brand
+from .models import *
 
 # Create your views here.
 
 def index(request):
+    user_type = 'registred' if request.user.is_authenticated else 'guest'
+    print(user_type)
+    product = Product.objects.all()
     data = {
         'title': 'Amado - Furniture Ecommerce Template | Home',
+        'products': product,
+        'user_type': user_type
     }
     return render(request, 'index.html', context=data)
 

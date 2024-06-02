@@ -9,7 +9,7 @@
             <ul>
                 {% for category in categories %} 
                     <li>
-                        <a href="{% url 'shop' %}/{{ category.link }}">{{ category.name }}</a>
+                        <a href="{% url 'main:furnitureshop' %}/{{ category.link }}">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
