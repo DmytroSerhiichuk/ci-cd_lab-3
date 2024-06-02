@@ -15,9 +15,13 @@ def index(request):
     return render(request, 'index.html', context=data)
 
 def shop(request):
+    user_type = 'registred' if request.user.is_authenticated else 'guest'
+    product = Product.objects.all()
     data = {
         'title': 'Amado - Furniture Ecommerce Template | Shop',
         'categories': Category.objects.all(),
+        'products': product,
+        'user_type': user_type
     }
     return render(request, 'shop.html', context=data)
 
@@ -29,6 +33,7 @@ def category(request, category_link):
     max_price = request.GET.get('max-price', 500)
 
     data = {
+        'categories': Category.objects.all(),
         'title': 'Amado - Furniture Ecommerce Template | Shop',
         'category_name': category.name,
         'products': Product.objects.filter(category=category),
