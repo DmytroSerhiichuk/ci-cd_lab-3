@@ -14,4 +14,4 @@ EXPOSE $PORT
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
-CMD python manage.py runserver 0.0.0.0:$PORT
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "lab_3.wsgi:application"]
