@@ -15,4 +15,4 @@ RUN python manage.py collectstatic --noinput
 
 RUN python manage.py migrate
 
-CMD python manage.py runserver 0.0.0.0:$PORT
+CMD python manage.py add_admin && python manage.py runserver 0.0.0.0:$PORT
