@@ -10,19 +10,19 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  # build:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Build Docker containers
-        run: |
-          docker-compose build
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
+  #     - name: Build Docker containers
+  #       run: |
+  #         docker-compose build
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

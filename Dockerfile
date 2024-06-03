@@ -11,6 +11,8 @@ COPY . .
 ENV PORT=8000
 EXPOSE $PORT
 
+RUN python manage.py collectstatic --noinput
+
 RUN python manage.py migrate
 
 CMD python manage.py runserver 0.0.0.0:$PORT
