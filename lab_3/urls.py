@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls"), name="main"),
     path('user/', include("user.urls"), name="user"),
+    path('cart/', include("cart.urls"), name="cart"),
     # re_path(r'^(?P<product_link>.+)/?$', views.product, name='product'),
 ]
 

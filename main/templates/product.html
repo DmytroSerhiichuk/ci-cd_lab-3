@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+    <!-- ##### Main Content Wrapper Start ##### -->
+    <div class="main-content-wrapper d-flex clearfix">
+
+        {% include "includes/header.html" with active="NONE" %}
+
+        <!-- Product Details Area Start -->
+        <div class="single-product-area section-padding-100 clearfix">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <div class="single_product_thumb product-image-container">
+                            <img class="product-image" src="{{ product.image.url }}" alt="" >
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="single_product_desc">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price">${{ product.price }}</p>
+                                <a href="product-details.html">
+                                    <h6>{{ product.name }}</h6>
+                                </a>
+                                <!-- Avaiable -->
+                                <p class="avaibility"><i class="fa fa-circle"></i> In Stock</p>
+                            </div>
+
+                            <div class="short_overview my-5">
+                                <p>{{ product.description }}</p>
+                            </div>
+
+                            <!-- Add to Cart Form -->
+                            <form class="cart clearfix" method="GET" action="/cart/add">
+                                {% csrf_token %}
+                                <div class="cart-btn d-flex mb-50">
+                                    <p>Count</p>
+                                    <div class="quantity">
+                                        <input type="hidden" name="pk" value="{{product.id}}">
+                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="count" value="1">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn amado-btn">Add to cart</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Details Area End -->
+        
+    </div>
+    <!-- ##### Main Content Wrapper End ##### -->
+    
+    {% include "includes/footer.html" with active="NONE" %}
+
+{% endblock content %}

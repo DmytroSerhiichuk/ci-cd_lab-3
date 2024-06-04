@@ -13,20 +13,19 @@
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix">
             <div class="amado-pro-catagory clearfix">
-
-                <!-- Single Catagory -->
-                {% for product in products %}
-                <div class="single-products-catagory clearfix">
-                    <a href="{% url 'main:furnitureshop' %}">
-                        <img src="{{ product.showImage }}" alt="">
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p>{{ product.name }}</p>
-                            <h4>{{ product.price }}</h4>
-                        </div>
-                    </a>
-                </div>
+                
+                {% for category in categories %}
+                    <!-- Single Catagory -->
+                    <div class="single-products-catagory clearfix">
+                        <a href="{% url 'main:category' category.link %}">
+                            <img src="{{ category.image.url }}" alt="">
+                            <!-- Hover Content -->
+                            <div class="hover-content">
+                                <div class="line"></div>
+                                <h4>{{ category.name }}</h4>
+                            </div>
+                        </a>
+                    </div>
                 {% endfor %}
             </div>
         </div>

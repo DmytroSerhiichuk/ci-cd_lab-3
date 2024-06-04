@@ -1,5 +1,5 @@
-db.sqlite3
-**/migrations/*
-!**/migrations/__init__.py
+# db.sqlite3
+# **/migrations/*
+# !**/migrations/__init__.py
 # *.env
-*/__pycache__
+# */__pycache__

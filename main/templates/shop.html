@@ -15,41 +15,39 @@
         <div class="amado_product_area section-padding-100">
             <div class="container-fluid">
 
-                <h2>Popular</h2>
-
                 <div class="row">
-                    {% for product in products %}
 
                     <!-- Single Product Area -->
                     <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                        <div class="single-product-wrapper">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="{{ product.showImage }}" alt="">
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product-description d-flex align-items-center justify-content-between">
-                                <!-- Product Meta Data -->
-                                <div class="product-meta-data">
-                                    <div class="line"></div>
-                                    <p class="product-price">$ {{ product.price }}</p>
-                                    <a>
-                                        <h6>{{ product.name }}</h6>
-                                    </a>
-                                </div>
-                                <!-- Ratings & Cart -->
-                                <div class="ratings-cart text-right">
-                                    <div class="cart">
-                                        <button data-product="{{product.id}}" data-action="add" class="btn btn-link px-2 update-cart">
-                                            <img src="{% static 'img/core-img/cart.png' %}" alt="Add to cart">
-                                        </button>
+                        {% for product in products %} 
+                            <div class="single-product-wrapper">
+                                <!-- Product Image -->
+                                <a href="{% url 'main:product' product.id %}">
+                                    <div class="product-img">
+                                        <img src="{{ product.image.url }}" alt="">
                                     </div>
-                                </div>
+    
+                                    <!-- Product Description -->
+                                    <div class="product-description d-flex align-items-center justify-content-between">
+                                        <!-- Product Meta Data -->
+                                        <div class="product-meta-data">
+                                            <div class="line"></div>
+                                            <p class="product-price">${{ product.price }}</p>
+                                            <h6>{{ product.name }}</h6>
+                                        </div>
+                                        <!-- Ratings & Cart -->
+                                        <div class="ratings-cart text-right">
+                                            <div class="cart">
+                                                <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="{% static 'img/core-img/cart.png' %}" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                
                             </div>
-                        </div>
+                        {% endfor %}
+                        
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
