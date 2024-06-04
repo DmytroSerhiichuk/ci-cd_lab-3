@@ -13,6 +13,7 @@ def shop(request):
     data = {
         'title': 'Amado - Furniture Ecommerce Template | Shop',
         'categories': Category.objects.all(),
+        'products': Product.objects.all()
     }
     return render(request, 'shop.html', context=data)
 
