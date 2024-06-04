@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+import json
 
 # Create your views here.
 
@@ -56,3 +57,23 @@ def product(request, product_link):
     }
     return render(request, 'product.html', context=data)
 
+def updateCart(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    quantity = data['quantity'] 
+    customer = request.user
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(user=customer, complete=False)
+
+    orderItem, created = PurchaseItem.objects.get_or_create(order=order, movie=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + quantity)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - quantity)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
