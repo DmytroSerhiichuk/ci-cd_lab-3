@@ -6,6 +6,7 @@ from .models import Category, Product, Brand
 def index(request):
     data = {
         'title': 'Amado - Furniture Ecommerce Template | Home',
+        'categories': Category.objects.all()
     }
     return render(request, 'index.html', context=data)
 

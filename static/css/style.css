@@ -109,3 +109,9 @@
 .total-products {
     margin-bottom: 0;
 }
+
+/* Product */
+
+.product-image-container {
+    border: 5px solid #fbb710;
+}
