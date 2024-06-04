@@ -29,13 +29,13 @@
                 <li><a href="{% url 'main:shop' %}">Shop</a></li>
             {% endif %} 
             <!-- <li><a href="product-details.html">Product</a></li> -->
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="{% url 'cart:index' %}">Cart</a></li>
+            <li><a href="{% url 'cart:checkout' %}">Checkout</a></li>
         </ul>
     </nav>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-        <a href="cart.html" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> Cart <span>(0)</span></a>
+        <a href="{% url 'cart:index' %}" class="cart-nav"><img src="{% static 'img/core-img/cart.png' %}" alt=""> Cart <span>(0)</span></a>
         <!-- <a href="#" class="fav-nav"><img src="{% static 'img/core-img/favorites.png' %}" alt=""> Favourite</a>
         <a href="#" class="search-nav"><img src="{% static 'img/core-img/search.png' %}" alt=""> Search</a> -->
     </div>
