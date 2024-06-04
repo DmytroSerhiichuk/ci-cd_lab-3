@@ -2,9 +2,11 @@ console.log("Hello world")
 
 var updateBtns = document.getElementsByClassName('update-cart');
 
+
 for (var i = 0; i < updateBtns.length; i++) {
     updateBtns[i].addEventListener('click', function (event) {
         event.preventDefault();
+        console.log("Hello world" + i)
 
         var productId = this.dataset.product;
         var action = this.dataset.action;
@@ -38,6 +40,7 @@ function updateUserOrder(productId, action, quantity) {
         return response.json();
     })
     .then((data) => {
+        console.log("Yep")
         console.log('data', data);
         location.reload();
     });

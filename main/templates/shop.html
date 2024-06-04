@@ -41,9 +41,9 @@
                                 <!-- Ratings & Cart -->
                                 <div class="ratings-cart text-right">
                                     <div class="cart">
-                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart">
-                                            <img src="{% static 'img/core-img/cart.png' %}" alt="">
-                                        </a>
+                                        <button data-product="{{product.id}}" data-action="add" class="btn btn-link px-2 update-cart">
+                                            <img src="{% static 'img/core-img/cart.png' %}" alt="Add to cart">
+                                        </button>
                                     </div>
                                 </div>
                             </div>

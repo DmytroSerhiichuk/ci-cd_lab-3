@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     {% load static %}
@@ -18,6 +18,26 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script>
+        var user = '{{request.user}}'
+        function getToken(name){
+            var coocieValue = null;
+            if (document.cookie && document.cookie !== ''){
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++){
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')){
+                  coocieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+                }
+              }
+            }
+            return coocieValue;
+          }
+          var csrftoken = getToken('csrftoken')
+    </script>
+
 </head>
 <body>
     {% include "includes/search_area.html" %}

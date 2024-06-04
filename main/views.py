@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
 from .models import *
 import json
 
@@ -57,6 +58,30 @@ def product(request, product_link):
     }
     return render(request, 'product.html', context=data)
 
+def cart(request):
+    user_type = 'registred' if request.user.is_authenticated else 'guest'
+    user = request.user
+
+    order, created = Order.objects.get_or_create(user = request.user, complete = False)
+    items = OrderItem.objects.filter(order = order)
+    context = {'items': items,
+               'user': user,
+               'user_type':user_type,
+               'order': order}
+    return render(request, 'cart.html', context)
+
+def checkout(request):
+    user_type = 'registred' if request.user.is_authenticated else 'guest'
+    user = request.user
+
+    order, created = Order.objects.get_or_create(user = request.user, complete = False)
+    items = OrderItem.objects.filter(order = order)
+    context = {'items': items,
+               'user': user,
+               'user_type':user_type,
+               'order': order}
+    return render(request, 'checkout.html', context)
+
 def updateCart(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -66,7 +91,7 @@ def updateCart(request):
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(user=customer, complete=False)
 
-    orderItem, created = PurchaseItem.objects.get_or_create(order=order, movie=product)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
     if action == 'add':
         orderItem.quantity = (orderItem.quantity + quantity)
@@ -77,3 +102,5 @@ def updateCart(request):
 
     if orderItem.quantity <= 0:
         orderItem.delete()
+    
+    return JsonResponse('Item was added', safe=False)

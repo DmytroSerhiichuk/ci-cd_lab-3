@@ -54,7 +54,7 @@ class Order(models.Model):
         return str(self.id)
     
     def getCartTotal(self):
-        orderitems = self.purchaseitem_set.all()
+        orderitems = self.orderitem_set.all()
         total = sum([item.getTotal() for item in orderitems])
         return total
 
@@ -64,5 +64,5 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
 
     def getTotal(self):
-        total = self.movie.price * self.quantity
+        total = self.product.price * self.quantity
         return total
