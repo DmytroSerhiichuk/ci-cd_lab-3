@@ -4,10 +4,45 @@
 
     <form method="GET" action="" name="filter_form">
         <!-- ##### Single Widget ##### -->
+        <div class="widget brands mb-50">
+            <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Brands</h6>
+            
+            <div class="widget-desc">
+                {% for brand in brands %} 
+                    <div class="form-check">
+                        {% if brand.name in selectedBrands %}
+                            <input class="form-check-input" type="checkbox" value="{{ brand.name }}" id="brand-{{ brand.name }}" name="brand" checked="true">
+                        {% else %}
+                            <input class="form-check-input" type="checkbox" value="{{ brand.name }}" id="brand-{{ brand.name }}" name="brand">
+                        {% endif %}
+                        <label class="form-check-label" for="brand-{{ brand.name }}">{{ brand.name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
         <!-- ##### Single Widget ##### -->
         <div class="widget price mb-50">
             <!-- Widget Title -->
+            <h6 class="widget-title mb-30">Price</h6>
+
+            <div class="widget-desc">
+                <div class="price-input-container">
+                    <label class="form-check-label">Minimum</label>
+                    <input class="price-input" type="number" value="{{ min_price }}" min="10" max="1000" name="min-price">
+                    <label class="form-check-label">Maximum</label>
+                    <input class="price-input" type="number" value="{{ max_price }}" min="10" max="1000" name="max-price">
+                    <!-- <div data-min="10" data-max="1000" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1000" data-label-result="">
+                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                    </div>
+                    <div class="range-price" name="price-range" value="this[innerText]">$10 - $1000</div> -->
+                </div>
+            </div>
         </div>
+
+        <button class="btn amado-btn mb-15" id="form_submit_btn">Filter</button>
     </form>
 </div>
